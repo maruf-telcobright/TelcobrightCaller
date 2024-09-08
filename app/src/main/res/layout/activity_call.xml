@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:keepScreenOn="true">
+
+    <LinearLayout
+        android:id="@+id/incomingCallLayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/incomingNameTV"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:gravity="center"
+            android:text="someone is calling"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/acceptButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:padding="15dp"
+            android:src="@drawable/ic_accept" />
+
+        <ImageView
+            android:id="@+id/rejectButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:padding="15dp"
+            android:src="@drawable/ic_reject" />
+
+    </LinearLayout>
+
+
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_below="@+id/incomingCallLayout"-->
+    <!--        android:id="@+id/whoToCallLayout">-->
+    <!--        <EditText-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="40dp"-->
+    <!--            android:hint="who to call ?"-->
+    <!--            android:layout_margin="30dp"-->
+    <!--            android:id="@+id/targetUserNameEt"/>-->
+    <!--        <androidx.appcompat.widget.AppCompatButton-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="40dp"-->
+    <!--            android:layout_below="@id/targetUserNameEt"-->
+    <!--            android:layout_marginHorizontal="30dp"-->
+    <!--            android:text="call"-->
+    <!--            android:id="@+id/callBtn"/>-->
+    <!--    </RelativeLayout>-->
+
+    <RelativeLayout
+        android:id="@+id/callLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <org.webrtc.SurfaceViewRenderer
+            android:id="@+id/remote_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <org.webrtc.SurfaceViewRenderer
+            android:id="@+id/local_view"
+            android:layout_width="120dp"
+            android:layout_height="150dp"
+            android:layout_above="@+id/controls"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="300dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="100dp"
+            android:elevation="16dp" />
+
+
+        <!--            <ImageView-->
+<!--                android:id="@+id/switch_camera_button"-->
+<!--                android:layout_width="45dp"-->
+<!--                android:layout_height="45dp"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:background="@drawable/circle_background"-->
+<!--                android:clickable="true"-->
+<!--                android:focusable="true"-->
+<!--                android:padding="12dp"-->
+<!--                app:backgroundTint="@color/cardview_dark_background"-->
+<!--                app:srcCompat="@drawable/ic_baseline_cameraswitch_24" />-->
+
+
+
+
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/callStatusId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:text="Calling..."
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/contactName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text=""
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/callStatusId"
+        app:layout_constraintStart_toStartOf="@+id/callStatusId"
+        app:layout_constraintTop_toBottomOf="@+id/callStatusId" />
+
+    <TextView
+        android:id="@+id/contactNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text=""
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/contactName"
+        app:layout_constraintStart_toStartOf="@+id/contactName"
+        app:layout_constraintTop_toBottomOf="@+id/contactName" />
+
+    <TextView
+        android:id="@+id/callDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/contactNumber"
+        app:layout_constraintStart_toStartOf="@+id/contactNumber"
+        app:layout_constraintTop_toBottomOf="@+id/contactNumber" />
+
+    <ImageView
+        android:id="@+id/end_call_button"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="23dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/callLayout"
+        app:layout_constraintEnd_toEndOf="@+id/callStatusId"
+        app:layout_constraintStart_toStartOf="@+id/callStatusId"
+        app:srcCompat="@drawable/ic_cancel" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginLeft="63dp"
+        android:layout_marginRight="63dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/end_call_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp">
+
+            <ImageView
+                android:id="@+id/mic_button"
+                android:layout_width="26dp"
+                android:layout_height="58dp"
+                android:layout_weight="0.3"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@drawable/mutebutton" />
+
+
+            <ImageView
+                android:id="@+id/video_button"
+                android:layout_width="29dp"
+                android:layout_height="52dp"
+                android:layout_weight="0.3"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@drawable/videobutton" />
+
+            <ImageView
+                android:id="@+id/audio_output_button"
+                android:layout_width="40dp"
+                android:layout_height="55dp"
+                android:layout_weight="0.3"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@drawable/loudbutton" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/hold_button"
+                android:layout_width="23dp"
+                android:layout_height="53dp"
+                android:layout_weight="0.3"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@drawable/holdbutton" />
+
+
+            <ImageView
+                android:id="@+id/minimize_button"
+                android:layout_width="45dp"
+                android:layout_height="55dp"
+                android:layout_weight="0.3"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@drawable/minimizebutton" />
+
+            <ImageView
+                android:id="@+id/keypad_button"
+                android:layout_width="38dp"
+                android:layout_height="57dp"
+                android:layout_weight="0.3"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@drawable/keypadbutton" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

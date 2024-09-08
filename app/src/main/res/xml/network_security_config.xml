@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="@raw/nginx_newssl"/>
+            <certificates src="@raw/nginx_selfsigned2"/>
+            <certificates src="@raw/sslcrt"/>
+            <certificates src="@raw/cert2"/>
+            <certificates src="@raw/nginx_selfsigned_home"/>
+            <certificates src="system"/>
+        </trust-anchors>
+    </base-config>
+    <domain-config cleartextTrafficPermitted="true">
+<!--        <domain includeSubdomains="true">36.255.71.143</domain>-->
+        <domain includeSubdomains="true">103.248.13.76</domain>
+        <domain includeSubdomains="true">103.248.13.73</domain>
+    </domain-config>
+</network-security-config>
